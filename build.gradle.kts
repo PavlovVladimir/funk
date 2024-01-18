@@ -26,6 +26,7 @@ publishing {
     publications {
         create<MavenPublication>("mavenRelease") {
             artifactId = "funk"
+            from(components["kotlin"])
         }
     }
 }
