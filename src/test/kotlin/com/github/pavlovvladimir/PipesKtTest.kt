@@ -21,4 +21,16 @@ class PipesKtTest {
         val result = ONE pipe ::add10
         assertEquals(11, result)
     }
+
+    @Test
+    fun `test string cat`() {
+        val result = ::hello cat DEVELOPER
+        assertEquals("Hello $DEVELOPER", result)
+    }
+
+    @Test
+    fun `test int cat`() {
+        val result = ::add10 cat 1
+        assertEquals(11, result)
+    }
 }

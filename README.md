@@ -19,7 +19,7 @@ dependencies {
     implementation 'com.github.PavlovVladimir:funk:0.0.2+'
 }
 ```
-Explain:
+Examples:
 - ```fun pipe```
   (works like pipes in *nix systems)
 ```kotlin
@@ -28,4 +28,13 @@ Explain:
 examples:
 ```kotlin
 "Hello world!" pipe ::println // print Hello world! in terminal
+```
+- ```fun cat```
+  (works like cat in *nix systems)
+```kotlin
+::<fun> cat <smth>
+```
+examples:
+```kotlin
+::println cat "Hello world!"// print Hello world! in terminal
 ```
