@@ -1,25 +1,29 @@
 # funk
-Small functional programming library written in Kotlin.
+Funk is a small library for Functional Programming in Kotlin.
 
 [https://jitpack.io/#PavlovVladimir/funk](https://jitpack.io/#PavlovVladimir/funk)
 
 [![Release](https://jitpack.io/v/PavlovVladimir/funk.svg)](https://jitpack.io/#PavlovVladimir/funk)
+[![Kotlin version](https://img.shields.io/badge/Kotlin-1.9.21-blue)](https://kotlinlang.org/docs/whatsnew18.html)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-To use it, add jitpack repository:
+## Setup:
+- add jitpack repository in root build.gradle:
 ```groovy
 repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
 }
 ```
-and to dependency:
+- add to dependency in module:
 ```groovy
 dependencies {
     ...
     implementation 'com.github.PavlovVladimir:funk:0.0.2+'
 }
 ```
-Examples:
+
+## Examples:
 - ```fun pipe```
   (works like pipes in *nix systems)
 ```kotlin
