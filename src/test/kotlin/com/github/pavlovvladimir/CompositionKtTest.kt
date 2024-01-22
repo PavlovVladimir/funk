@@ -9,7 +9,7 @@ class CompositionKtTest {
     private fun add10(n: Int): Int = n + 10
 
     /**
-    The usual way looks val result = stringToInt(intToString(10))
+    The usual way looks like val result = stringToInt(intToString(10))
      */
     @Test
     fun `test compose integer 100 to string to length of string should be 3`() {

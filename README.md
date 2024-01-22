@@ -29,7 +29,7 @@ dependencies {
 ```kotlin
 <smth> pipe ::<fun>
 ```
-examples:
+example:
 ```kotlin
 "Hello world!" pipe ::println // print Hello world! in terminal
 ```
@@ -38,7 +38,32 @@ examples:
 ```kotlin
 ::<fun> cat <smth>
 ```
-examples:
+example:
 ```kotlin
 ::println cat "Hello world!"// print Hello world! in terminal
 ```
+- ```fun compose```
+  Let's assume we have 3 functions:
+```kotlin
+private fun intToString(n: Int): String = n.toString()
+private fun stringToInt(s: String): Int = s.length
+private fun add10(n: Int): Int = n + 10
+```
+```kotlin
+val s = intToString(100) // "100"
+val k = stringToInt(s) // 3
+val n = add10(k) // 13
+```
+The usual way looks like:
+```kotlin
+val n:Int = add10(stringToInt(intToString(100))) // 13
+```
+The FP way looks like:
+```kotlin
+val f:Int = ::intToString compose ::stringToInt compose ::add10 // f here is function (n: Int) -> Int 
+val n = f(100) // 13
+```
+Looks more readable, right?
+
+- ```fun after```
+works similar way, but in another direction (look CompositionKtTest in test package)
