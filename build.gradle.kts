@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.github.pavlovvladimir"
-version = "0.0.1"
+version = "0.0.3"
 
 repositories {
     mavenCentral()
@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.3.2")
 }
 
 tasks.test {
