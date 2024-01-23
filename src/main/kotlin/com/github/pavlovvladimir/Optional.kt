@@ -21,8 +21,20 @@ fun <T> Optional<T>.getOrDefault(defaultValue: T): T = when (this) {
     is Some<T> -> value
 }
 
+fun <T> Optional<T>.getOrDefault(defaultValue: () -> T): T = when (this) {
+    is None -> defaultValue()
+    is Some<T> -> value
+}
+
+fun <T> Optional<T>.getOrNull(): T? = getOrDefault(null)
+
 fun <T> Optional<T>.orElse(defaultValue: Optional<T>): Optional<T> = when (this) {
     is None -> defaultValue
+    is Some<T> -> this
+}
+
+fun <T> Optional<T>.orElse(defaultValue: () -> Optional<T>): Optional<T> = when (this) {
+    is None -> defaultValue()
     is Some<T> -> this
 }
 
@@ -42,7 +54,24 @@ fun <A, B> Optional<A>.map(f: function<A, B>): Optional<B> = when (this) {
     }
 }
 
-fun <A, B> Optional<A>.flatMap(f: (A) -> Optional<B>): Optional<B> = when (this) {
-    is None -> None
+fun <A, B> Optional<A>.flatMap(f: function<A, Optional<B>>): Optional<B> = when (this) {
+    is None -> Optional.empty()
+    is Some<A> -> {
+        when (val opt = f(value)) {
+            is None -> Optional.empty()
+            is Some<B> -> Optional.lift(opt.value)
+        }
+    }
+}
+
+@Dirty("looks bad")
+fun <A> Optional<A>.execute(f: function<A, Unit>) = when (this) {
+    is None -> pass
+    is Some -> f(value)
+}
+
+@Dirty("looks bad")
+fun <A> Optional<A>.execute(f: function<A, Unit>, default: () -> Unit) = when (this) {
+    is None -> default()
     is Some -> f(value)
 }
